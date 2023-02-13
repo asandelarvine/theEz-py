@@ -12,8 +12,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from "./components/HomeScreen";
 import ProfileScreen from "./components/ProfileScreen";
 import SettingsScreen from './components/SettingsScreen';
-import Login from './screens/Login';
-import Signup from './screens/Signup';
+// import Login from './screens/Login';
+// import Signup from './screens/Signup';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -22,48 +22,16 @@ const Tab = createBottomTabNavigator();
 
 
 
-const Auth = () => {
-  // Stack Navigator for Login and Sign up Screen
-  return (
-    <Stack.Navigator initialRouteName="Login">
-      <Stack.Screen
-        name="Login"
-        component={Login}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="Signup"
-        component={Signup}
-        options={{
-          title: 'Signup', //Set Header Title
-          headerStyle: {
-            backgroundColor: '#307ecc', //Set Header color
-          },
-          headerTintColor: '#fff', //Set Header text color
-          headerTitleStyle: {
-            fontWeight: 'bold', //Set Header text style
-          },
-        }}
-      />
-    </Stack.Navigator>
-  );
-};
-
-const App = () => {
+export default function App() {
   return (
     <NavigationContainer>
-    <Stack.Navigator initialRouteName="HomeScreen" >
-        {/* Auth Navigator: Include Login and Signup */}
-        <Stack.Screen
-          name="Auth"
-          component={Auth}
-          options={{headerShown: false}}
-        />
-        {/* Navigation Drawer as a landing page */}
-        <Drawer.Screen
+  <Drawer.Navigator initialRouteName="Home"
+  screenOptions={{ drawerActiveTintColor: "#e91e63" }}
+  >
+    <Drawer.Screen
       name="Home"
       component={HomeScreen}
-      options={{ //change the configuration of screen
+      options={{ //change the configuration of our screen
         drawerIcon: ({ color, number, focused }) => { //set the icon:
           return ( //the icon will be an image
             <Image
@@ -102,9 +70,10 @@ const App = () => {
         },
       }}
     />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
-};
+  </Drawer.Navigator>
+  
+    
+</NavigationContainer>
 
-export default App;
+  );
+}
