@@ -3,21 +3,21 @@ import "react-native-gesture-handler"; //this should be the first import in your
 import * as React from "react";
 import { View, Text, Image } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-// import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-// import { createStackNavigator } from '@react-navigation/stack';
 
+
+// import components
 import HomeScreen from "./components/HomeScreen";
-import AboutScreen from "./components/AboutScreen";
-import ContactScreen from './components/ContactScreen';
-// import Login from './screens/Login';
-// import Signup from './screens/Signup';
+import ProfileScreen from "./components/ProfileScreen";
+import SettingsScreen from './components/SettingsScreen';
 
-// const Stack = createNativeStackNavigator();
+
+const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 const Tab = createBottomTabNavigator();
-// const Stack = createStackNavigator();
+
 
 
 export default function App() {
@@ -41,13 +41,13 @@ export default function App() {
       }}
     />
     <Drawer.Screen
-      name="About"
-      component={AboutScreen}
+      name="Profile"
+      component={ProfileScreen}
       options={{
         drawerIcon: ({ color, number, focused }) => { //set the icon for all screens
           return (
             <Image
-              source={require("./assets/about-ezana.png")}
+              source={require("./assets/profile.png")}
               style={{ height: 30, width: 30 }}
             />
           );
@@ -55,13 +55,13 @@ export default function App() {
       }}
     />
     <Drawer.Screen
-      name="Contact"
-      component={ContactScreen}
+      name="Settings"
+      component={SettingsScreen}
       options={{
         drawerIcon: ({ color, number, focused }) => {
           return (
             <Image
-              source={require("./assets/contacts-ezana.png")}
+              source={require("./assets/global-settings.png")}
               style={{ height: 30, width: 30 }}
             />
           );
@@ -69,13 +69,8 @@ export default function App() {
       }}
     />
   </Drawer.Navigator>
-  {/* <Stack.Navigator screenOptions={{headerShown: false}} >
-      <Stack.Screen name="Login" component={Login} />
-      <Stack.Screen name="Signup" component={Signup} />
-     
-
-    </Stack.Navigator>
-     */}
+  
+    
 </NavigationContainer>
 
   );
