@@ -148,6 +148,7 @@ function Signup() {
         <Button style={styles.buttonDesign}>
             REGISTER NOW
         </Button>
+        
       </View>
 
       {/* Line */}
